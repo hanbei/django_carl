@@ -1,19 +1,22 @@
-{# Load the tag library #}
-{% load bootstrap3 %}
+{% extends 'recipes/layout.html' %}
 
-{# Load CSS and JavaScript #}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
-
-{# Display django.contrib.messages as Bootstrap alerts #}
-{% bootstrap_messages %}
-
-{% if recipes %}
-    <ul>
-    {% for recipe in recipes %}
-        <li><a href="{% url 'details' recipe.id %}">{{ recipe.title }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No recipes are available.</p>
-{% endif %}
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h1>Recipes</h1>
+    </div>
+    <table class="table col-md-12">
+        {% if recipes %}
+        {% for recipe in recipes %}
+        <tr>
+            <td class="col-md-4"><a href="{% url 'details' recipe.id %}">{{ recipe.title }}</a></td>
+            <td class="col-md-7">{{ recipe.description|safe }}</td>
+            <td class="col-md-1">{{ recipe.id }}</td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <p>No recipes are available.</p>
+        {% endif %}
+    </table>
+</div>
+{% endblock %}

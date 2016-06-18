@@ -1,11 +1,16 @@
-{# Load the tag library #}
-{% load bootstrap3 %}
+{% extends 'recipes/layout.html' %}
 
-{# Load CSS and JavaScript #}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
-
-{# Display django.contrib.messages as Bootstrap alerts #}
-{% bootstrap_messages %}
-
-<a href="{% url 'details' recipe.id %}">{{ recipe.title }}</a>
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        {% if recipe %}
+        <h1><a href="{% url 'details' recipe.id %}">{{ recipe.title }}</a></h1>
+        {% else %}
+        <h1>Ist mir egal</h1>
+        {% endif %}
+    </div>
+    <div class="col-md-6">
+        <a href="{% url 'random' %}">Nö</a>
+    </div>
+</div>
+{% endblock %}
