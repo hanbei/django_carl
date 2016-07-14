@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="row">
-    <div class="col-lg-12 text-center">
+    <div class="col-md-12 text-center">
         {% if recipe %}
         <h1><a href="{% url 'details' recipe.id %}">{{ recipe.title }}</a></h1>
         {% else %}
@@ -11,7 +11,7 @@
     </div>
 </div>
 <div class="row" style="margin-top:2em">
-    <div class="col-lg-12 text-center">
+    <div class="col-md-12 text-center">
         <a href="{% url 'random' %}" class="btn btn-default">Nö</a>
     </div>
 </div>
